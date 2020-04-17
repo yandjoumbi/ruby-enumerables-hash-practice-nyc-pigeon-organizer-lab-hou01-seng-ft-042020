@@ -1,57 +1,22 @@
 
- pigeon_list = {
- 
-   "Theo" => { :color => ["purple", "grey"]},
-   "Theo" => {:gender => ["male"] },
-   "Theo" => {:lives => ["Subway"]}
-  },
-  "Peter Jr." => {
-    :color => ["purple", "grey"],
-    :gender => ["male"],
-    :lives => ["Library"]
-  },
-  "Lucky" => {
-    :color => ["purple"],
-    :gender => ["male"],
-    :lives => ["Central Park"]
-  },
-  "Ms. K" => {
-    :color => ["grey", "white"],
-    :gender => ["female"],
-    :lives => ["Central Park"]
-  },
-  "Queenie" => {
-    :color => ["white", "brown"],
-    :gender => ["female"],
-    :lives => ["Subway"]
-  },
-  "Andrew" => {
-    :color => ["white"],
-    :gender => ["male"],
-    :lives => ["City Hall"]
-  },
-  "Alex" => {
-    :color => ["white", "brown"],
-    :gender => ["male"],
-    :lives => ["Central Park"]
-  }
- }
+def nyc_pigeon_organizer(data)
+ # write your code here!
+ pigeon_list = {}
 
-
-
-
-
-pigeon_data = {
-  :color => {
-    :brown => ["Luca"],
-    :black => ["Lola"],
-  },
-  :gender => {
-    :male => ["Luca"],
-    :female => ["Lola"]
-  },
-  :lives => {
-    "Central Park" => ["Lola"],
-    "Library" => ["Luca"]
-  }
-}
+ data.each do |attribute, hash|
+   hash.each do |feature, array|
+     array.each do |name|
+       if !pigeon_list[name]
+         pigeon_list[name] = {}
+       end
+       if !pigeon_list[name][attribute]
+         !pigeon_list[name][attribute] = []
+       end
+       if !pigeon_list[name][attribute].include?(feature)
+         pigeon_list[name][attribute] << feature.to_s
+       end
+     end
+   end
+ end
+ pigeon_list
+end
